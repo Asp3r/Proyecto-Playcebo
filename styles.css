@@ -1,0 +1,316 @@
+
+/* ---------------  ESTILOS PARA LA PAGINA DE INICIO  ----------------------- */
+
+
+
+/* ---------- Header ---------- */
+
+header {
+    display: flex;
+    flex-direction: column; /* Coloca el logo encima del nav */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 10px 20px;
+    background-color: #5271FF;
+}
+
+/* Estilos para el logo */
+.logo-box {
+    display: flex;
+    justify-content: center; /* Centra el logo en su contenedor */
+    align-items: center;
+    margin-bottom: 0px; /* Espacio entre el logo y el nav */
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+
+.titulo-box{
+    margin-bottom: 1%;
+    color: white;
+}
+
+/* Estilos para el nav */
+nav ul {
+    display: flex;
+    /*justify-content: center; Centra los elementos <li> en el nav */
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 3%;
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+nav a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: white; /* Color del texto */
+}
+
+nav a:hover {
+    color: rgb(44, 44, 44); /* Color del texto al pasar el mouse */
+}
+
+nav ul li {
+    margin: 0 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+/* ---------- Main ---------- */
+
+
+main{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+section {
+    text-align: center; /* Centra el texto dentro de la sección */
+    padding: 20px; /* Agrega un poco de espacio alrededor de la sección */
+}
+
+h3 {
+    margin: 0; /* Elimina márgenes por defecto del h3 */
+    font-size: 24px; /* Ajusta el tamaño de fuente del título, puedes modificarlo */
+    font-weight: bold; /* Asegura que el título se vea destacado */
+}
+
+p {
+    margin-top: 10px; /* Espacio entre el título y el párrafo */
+    line-height: 1.6; /* Mejora la legibilidad del texto */
+    font-size: 16px; /* Ajusta el tamaño de fuente del párrafo */
+}
+
+/* Container principal del grid */
+.staff-grid {
+    display: grid;
+    grid-template-rows: auto auto auto auto; /* Cuatro filas en total */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas inicialmente */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilos para las celdas específicas */
+
+
+.cell-middle-1 {
+    grid-column: 1 / 2; /* Primera celda de la segunda fila */
+}
+
+.cell-middle-2 {
+    grid-column: 2 / 3; /* Segunda celda de la segunda fila */
+}
+
+.cell-lower-1 {
+    grid-column: 1 / 2; /* Primera celda de la tercera fila */
+}
+
+.cell-lower-2 {
+    grid-column: 2 / 3; /* Segunda celda de la tercera fila */
+}
+
+/* .cell-top {
+    grid-column: 1 / -1;  Ocupa toda la primera fila 
+} */
+
+/* .cell-bottom {
+    grid-column: 1 / -1; 
+} */
+
+.cell-top, .cell-bottom {
+    grid-column: 1 / -1; /* Ocupa toda la fila */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Estilos de ejemplo para las celdas */
+.cell {
+    /* background-color: #f2f2f2; */
+    /* border: 1px solid #ddd; */
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: Arial, sans-serif;
+}
+
+/* Reseteo de estilos para la lista */
+.footer-list {
+    list-style: none; /* Elimina los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en fila horizontal */
+    justify-content: space-around; /* Espacio alrededor de cada elemento, incluyendo los bordes */
+    align-items: center; /* Alinea verticalmente los elementos dentro del footer */
+}
+
+footer{
+    margin-top: 3%;
+    margin-bottom: 0;
+    background-color: #5271FF;
+}
+
+.footer-list li {
+    padding: 10px;
+    margin-top: 1%;
+}
+
+.icono-redes{
+    width: 30px;
+    height: 30px;
+
+    transition: transform 0.3s ease;
+}
+
+.icono-redes:hover{
+    transform: scale(1.4);
+}
+
+#tw-logo{
+    width: 45px;
+}
+
+.copyright{
+    text-align: center;
+    padding-bottom: 0;
+    padding-top: 1%;
+}
+
+html, body {
+    height: 100%;
+}
+
+.card-persona{
+    border: 1px solid #b3b2b2;
+    border-radius: 1%;
+    width: 50%;
+}
+
+#imagen-persona, #imagen-persona-medio{
+    width: 100%;
+}
+
+.info-persona{
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 8%;
+}
+
+.info-persona h6{
+    padding-bottom: 2%;
+}
+
+.boton-persona, .boton-persona-medio{
+    background-color: #3498db;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 8%;
+    width: 65%;
+    height: 35px;
+    color: white;
+    font-weight: normal;
+}
+
+.boton-persona:hover, .boton-persona-medio:hover{
+    background-color: #2770a1;
+}
+
+.card-persona-medio{
+    border: 1px solid #b3b2b2;
+    border-radius: 1%;
+    height: 100%;
+}
+
+.info-persona-medio{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 8%;
+}
+
+.info-persona-medio h6{
+    padding-bottom: 4%;
+}
+
+
+/* -------- SECCION CONTACTO ---------- */
+
+.presentacion-form{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.form-contacto{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.form-contacto input, .form-contacto textarea{
+    width: 100%;
+    background-color: #f1f1f1;
+    border: 1px solid rgba(46, 46, 46, 0.2);
+    border-radius: 4px;
+}
+
+.form-contacto input{
+    height: 1.5em;
+}
+
+.form-contacto label{
+    display: inline-block; /* Asegura que el margen funcione correctamente */
+    margin-bottom: 3%;
+}
+
+.form-contacto textarea{
+    margin-bottom: 5%;
+}
+
+.form-contacto button{
+    height: 3em;
+    width: 100%;
+    background-color: #678fff;
+    border: 1px solid rgba(46, 46, 46, 0.5);
+    border-radius: 4px;
+}
+
+.form-contacto button:hover{
+    background-color: #395cbe;
+    border: 1px solid rgba(133, 133, 133, 0.5);
+    color: white;
+}
+
+
+/* ---------- SECCION PRODUCTOS ---------- */
+
+.construccion{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.construccion img{
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.construccion h3{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.construccion h4{
+    text-align: center;
+
+}
+
