@@ -1,8 +1,6 @@
 
 /* ---------------  ESTILOS PARA LA PAGINA DE INICIO  ----------------------- */
 
-
-
 /* ---------- Header ---------- */
 
 header {
@@ -135,6 +133,19 @@ p {
     font-family: Arial, sans-serif;
 }
 
+.ubicacion {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto dentro de los elementos de texto */
+    padding: 20px; /* Espacio opcional alrededor de la sección */
+}
+
+.ubicacion .mapa {
+    max-width: 100%; /* Asegura que el mapa se adapte al ancho del contenedor en pantallas pequeñas */
+    height: auto; /* Mantiene la proporción del mapa */
+}
+
 /* Reseteo de estilos para la lista */
 .footer-list {
     list-style: none; /* Elimina los puntos de la lista */
@@ -200,6 +211,10 @@ html, body {
 
 .info-persona h6{
     padding-bottom: 2%;
+}
+
+.info-persona-medio{
+    margin-bottom: 3%;
 }
 
 .boton-persona, .boton-persona-medio{
@@ -314,3 +329,74 @@ html, body {
 
 }
 
+h1, h2, h3, h4, h5, h6, p{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+/* Estilos para tablets y dispositivos móviles: */
+
+@media (max-width: 767px){
+
+    header{
+        text-align: center;
+    }
+
+    .titulo-box{
+        margin-bottom: 5%;
+    }
+
+    h1 {
+        line-height: 1.5; /* Ajusta la altura de línea */
+    }
+
+    nav ul {
+        /* flex-direction: column; */
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    main{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+    }
+
+    .staff-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: repeat(6, auto); /* Seis filas */
+    }
+
+    .cell-middle-1,
+    .cell-middle-2,
+    .cell-lower-1,
+    .cell-lower-2 {
+        grid-column: auto; /* Asegura que cada celda ocupe la única columna */
+    }
+
+    .ubicacion{
+        width: 90%;
+    }
+
+    .mapa{
+        width: 100%;
+    }
+
+    .miembros p, .ubicacion p{
+        margin-bottom: 5%;
+    }
+
+    .card-persona{
+        width: 100%;
+    }
+
+}
