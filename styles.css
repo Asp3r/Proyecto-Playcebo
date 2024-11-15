@@ -63,6 +63,18 @@ main{
     margin-top: 5%;
 }
 
+.aviso{
+    background-color: rgb(204, 203, 203);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.quienes-somos{
+    margin-top: 8%;
+}
+
 section {
     text-align: center; /* Centra el texto dentro de la sección */
     padding: 20px; /* Agrega un poco de espacio alrededor de la sección */
