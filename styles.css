@@ -304,11 +304,21 @@ html, body {
 .boton-volver{
     
     height: 3.5em;
-    width: 40em;
+    /* width: 40em; */
+    width: 100%;
     background-color: #678fff;
     border: 1px solid rgba(46, 46, 46, 0.5);
     border-radius: 4px;
 
+}
+
+.cartel-confirmacion a{
+    width: 90%;
+}
+
+.cartel-confirmacion img{
+    width: 100%;
+    height: auto;
 }
 
 .boton-volver:hover{
