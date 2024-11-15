@@ -301,6 +301,40 @@ html, body {
     color: white;
 }
 
+.boton-volver{
+    
+    height: 3.5em;
+    width: 40em;
+    background-color: #678fff;
+    border: 1px solid rgba(46, 46, 46, 0.5);
+    border-radius: 4px;
+
+}
+
+.boton-volver:hover{
+    background-color: #395cbe;
+    border: 1px solid rgba(133, 133, 133, 0.5);
+    color: white;
+}
+
+.cartel-confirmacion {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+    justify-content: center; /* (opcional) Centra verticalmente los elementos si hay suficiente espacio */
+}
+
+.cartel-confirmacion{
+    margin-top: 10%;
+    color: #5271FF;
+}
+
+.cartel-confirmacion img{
+    margin-bottom: 10%;
+}
+
+
+
 
 /* ---------- SECCION PRODUCTOS ---------- */
 
@@ -329,7 +363,7 @@ html, body {
 
 }
 
-h1, h2, h3, h4, h5, h6, p{
+h1, h2, h3, h4, h5, h6, p, li, label{
     font-family: 'Roboto', sans-serif;
 }
 
