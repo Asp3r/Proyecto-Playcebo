@@ -77,7 +77,7 @@
                           <h6>$ 7.50</h6>
                         </div>
                         
-                        <button class="boton-carrito">Añadir al carrito</button>
+                        <button class="boton-carrito" id="carrito-rompecabezas">Añadir al carrito</button>
 
                     </div>
 
@@ -96,7 +96,7 @@
                           <h6>$ 3.00</h6>
                         </div>
                         
-                        <button class="boton-carrito">Añadir al carrito</button>
+                        <button class="boton-carrito" id="carrito-spinner">Añadir al carrito</button>
 
                     </div>
 
@@ -115,7 +115,7 @@
                           <h6>$ 32.50</h6>
                         </div>
                         
-                        <button class="boton-carrito">Añadir al carrito</button>
+                        <button class="boton-carrito" id="carrito-pista">Añadir al carrito</button>
 
                     </div>
 
@@ -134,7 +134,7 @@
                           <h6>$ 10.75</h6>
                         </div>
                         
-                        <button class="boton-carrito">Añadir al carrito</button>
+                        <button class="boton-carrito" id="carrito-masterball">Añadir al carrito</button>
 
                     </div>
 
@@ -153,7 +153,7 @@
                           <h6>$ 17.00</h6>
                         </div>
                         
-                        <button class="boton-carrito">Añadir al carrito</button>
+                        <button class="boton-carrito" id="carrito-tortugas">Añadir al carrito</button>
 
                     </div>
 
@@ -161,9 +161,14 @@
 
             </section>
 
+            <!-- 
+            BOTONES PARA DEBUGGEAR
+
             <button class="boton-debug">Dejar de mostrar mensaje de carrito</button>
 
             <button class="boton-debug-2">Mostrar mensaje de carrito vacio</button>
+            
+            -->
 
             <section class="carrito">
 
@@ -178,7 +183,7 @@
                   <h4>Precio del producto</h4>
                 </div>
                 <div class="celda-descripciones fila-botones">
-                  <h4>nnn</h4>
+                  <h4></h4>
                 </div>
 
               </div>
@@ -191,7 +196,9 @@
 
               </div>
 
-              <div class="carrito-producto ajedrez-no-mostrar" id="ajedrezEnCarrito">
+              <!-- AJEDREZ EN EL CARRITO DE COMPRAS -->
+
+              <div id="ajedrezEnCarrito" class="carrito-producto ajedrez-no-mostrar">
 
                 <div class="nombre-producto">
                   <p>Tablero Artesanal de Ajedrez</p>
@@ -202,7 +209,97 @@
                 </div>
 
                 <div class="eliminar-producto">
-                  <button class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                  <button id="eliminarAjedrez" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+              <!-- ROMPECABEZAS EN EL CARRITO DE COMPRAS -->
+
+              <div id="rompecabezasEnCarrito" class="carrito-producto rompecabezas-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p>Rompecabezas de 24 piezas</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 7.50</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button id="eliminarRompecabezas" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+              <!-- SPINNER EN EL CARRITO DE COMPRAS -->
+
+              <div id="spinnerEnCarrito" class="carrito-producto spinner-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p>Fidget Spinner de Aluminio</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 3.00</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button id="eliminarSpinner" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+              <!-- PISTA EN EL CARRITO DE COMPRAS -->
+
+              <div id="pistaEnCarrito" class="carrito-producto pista-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p>Pista de Hot Wheels</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 32.50</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button id="eliminarPista" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+              <!-- MASTERBALL EN EL CARRITO DE COMPRAS -->
+
+              <div id="masterballEnCarrito" class="carrito-producto masterball-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p>Master Ball de Coleccion</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 10.75</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button id="eliminarMasterball" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+              <!-- TORTUGAS EN EL CARRITO DE COMPRAS -->
+
+              <div id="tortugasEnCarrito" class="carrito-producto tortugas-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p>Set de Tortugas de Peluche</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 17.00</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button id="eliminarTortugas" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
                 </div>
 
               </div>

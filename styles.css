@@ -476,6 +476,8 @@ h1, h2, h3, h4, h5, h6, p, li, label{
 .carrito-producto{
     width: 100%;
     display: flex;
+
+    margin-bottom: 3%;
 }
 
 .nombre-producto, .precio-producto{
@@ -501,9 +503,30 @@ h1, h2, h3, h4, h5, h6, p, li, label{
     border: 1px solid rgba(46, 46, 46, 0.5);
     border-radius: 4px;
     background-color: #678fff;
+
+    width: 52%;
+    height: auto;
+
+    margin-top: 2%;
+
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.ajedrez-no-mostrar{
+.boton-producto-en-carrito:hover {
+    transform: scale(1.20);
+  }
+
+.boton-producto-en-carrito img{
+    width: 75%;
+    height: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ajedrez-no-mostrar, .rompecabezas-no-mostrar, .spinner-no-mostrar, .pista-no-mostrar,
+.masterball-no-mostrar, .tortugas-no-mostrar {
     display: none;
 }
 
