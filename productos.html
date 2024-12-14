@@ -49,16 +49,16 @@
 
                     <div class="card-producto">
 
-                        <div class="foto-producto">
-                          <img src="imgs\productos\ajedrez.jpeg" alt="tablero de ajedrez" id="imagen-ajedrez">
-                        </div>
+                      <div class="foto-producto">
+                        <img src="imgs\productos\ajedrez.jpeg" alt="tablero de ajedrez" id="imagen-ajedrez">
+                      </div>
 
-                        <div class="info-producto">
-                          <h5>Tablero de Ajedrez</h5>
-                          <h6>$ 25.00</h6>
-                        </div>
+                      <div class="info-producto">
+                        <h5>Tablero de Ajedrez</h5>
+                        <h6>$ 25.00</h6>
+                      </div>
 
-                        <button class="boton-carrito">Añadir al carrito</button>
+                      <button class="boton-carrito" id="carrito-ajedrez">Añadir al carrito</button>
 
                     </div>
 
@@ -159,7 +159,55 @@
 
                 </div>
 
-              </section>
+            </section>
+
+            <button class="boton-debug">Dejar de mostrar mensaje de carrito</button>
+
+            <button class="boton-debug-2">Mostrar mensaje de carrito vacio</button>
+
+            <section class="carrito">
+
+              <!-- PRIMER FILA DEL CARRITO. DESCRIPCION DEL PRODUCTO / PRECIO / CELDA VACIA -->
+
+              <div class="carrito-titulo">
+
+                <div class="celda-descripciones">
+                  <h4>Nombre del producto</h4>
+                </div>
+                <div class="celda-descripciones">
+                  <h4>Precio del producto</h4>
+                </div>
+                <div class="celda-descripciones fila-botones">
+                  <h4>nnn</h4>
+                </div>
+
+              </div>
+
+              <!-- FILA QUE SE MOSTRARA POR DEFECTO CUANDO EL CARRITO ESTE VACIO -->
+
+              <div class="carrito-vacio">
+
+                <p>¡Su carrito esta vacio! Seleccione articulos para añadirlos aqui.</p>
+
+              </div>
+
+              <div class="carrito-producto ajedrez-no-mostrar" id="ajedrezEnCarrito">
+
+                <div class="nombre-producto">
+                  <p>Tablero Artesanal de Ajedrez</p>
+                </div>
+
+                <div class="precio-producto">
+                  <p>$ 25.00</p>
+                </div>
+
+                <div class="eliminar-producto">
+                  <button class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
+                </div>
+
+              </div>
+
+            </section>
               
 
         </main>
@@ -176,5 +224,6 @@
   
         </footer>
 
+        <script src="funcionalidadesCarrito.js"></script>
     </body>
 </html>

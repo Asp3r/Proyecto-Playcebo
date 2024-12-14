@@ -121,11 +121,11 @@ p {
 }
 
 /* .cell-top {
-    grid-column: 1 / -1;  Ocupa toda la primera fila 
+    grid-column: 1 / -1;  Ocupa toda la primera fila
 } */
 
 /* .cell-bottom {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
 } */
 
 .cell-top, .cell-bottom {
@@ -315,7 +315,7 @@ html, body {
 }
 
 .boton-volver{
-    
+
     height: 3.5em;
     /* width: 40em; */
     width: 100%;
@@ -382,7 +382,7 @@ h1, h2, h3, h4, h5, h6, p, li, label{
     margin-left: auto;
     margin-right: auto;
 }
-  
+
   .grid-item {
     background-color: #f9f9f9; /* Color de fondo para distinguir las celdas (puedes quitarlo) */
     border: 1px solid #ddd;   /* Bordes opcionales */
@@ -399,13 +399,13 @@ h1, h2, h3, h4, h5, h6, p, li, label{
       grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
     }
   }
-  
+
   @media (max-width: 480px) {
     .productos-grid {
       grid-template-columns: 1fr; /* 1 columna en celulares */
     }
   }
-  
+
 
 /*  FIN DE LA RESPONSIBIDAD DE LA GRID DE PRODCUTOS   */
 
@@ -443,7 +443,70 @@ h1, h2, h3, h4, h5, h6, p, li, label{
     cursor: pointer;
 }
 
-  
+/* ------------ CARRITO DE COMPRAS ------------------ */
+
+.carrito{
+    margin-top: 3.5em;
+    /* display: flex; */
+}
+
+.carrito-titulo{
+    width: 100%;
+    display: flex;
+}
+
+.celda-descripciones{
+    display: inline-block;
+    width: 44%;
+    text-align: left;
+}
+
+.fila-botones{
+    width: 10%;
+}
+
+.carrito-vacio{
+    width: 100%;
+}
+
+.carrito-vacio-true{
+    display: none;
+}
+
+.carrito-producto{
+    width: 100%;
+    display: flex;
+}
+
+.nombre-producto, .precio-producto{
+    display: inline-block;
+    width: 44%;
+    text-align: left;
+}
+
+.eliminar-producto{
+    width: 10%;
+}
+
+.icono-eliminar-elemento{
+    /* width: 100%;        
+    height: auto;       */
+    object-fit: cover;
+    width: 25px;
+    height: auto;
+
+}
+
+.boton-producto-en-carrito{
+    border: 1px solid rgba(46, 46, 46, 0.5);
+    border-radius: 4px;
+    background-color: #678fff;
+}
+
+.ajedrez-no-mostrar{
+    display: none;
+}
+
 
 
 
