@@ -169,21 +169,26 @@
             <button class="boton-debug-2">Mostrar mensaje de carrito vacio</button>
             
             -->
+            <!-- <button id="boton-resetear-localstorage">Resetear Local Storage (debug)</button> -->
 
             <section class="carrito">
 
               <!-- PRIMER FILA DEL CARRITO. DESCRIPCION DEL PRODUCTO / PRECIO / CELDA VACIA -->
 
+              <div class="presentacion-carrito">
+                <h4>Carrito de compras</h4>
+              </div>
+
               <div class="carrito-titulo">
 
                 <div class="celda-descripciones">
-                  <h4>Nombre del producto</h4>
+                  <h5>Nombre del producto</h5>
                 </div>
                 <div class="celda-descripciones">
-                  <h4>Precio del producto</h4>
+                  <h5>Precio del producto</h5>
                 </div>
                 <div class="celda-descripciones fila-botones">
-                  <h4></h4>
+                  <h5></h5>
                 </div>
 
               </div>
@@ -301,6 +306,15 @@
                 <div class="eliminar-producto">
                   <button id="eliminarTortugas" class="boton-producto-en-carrito"><img src="imgs\cestoDeBasuraIcono.png" alt="icono-eliminar" class="icono-eliminar-elemento"></button>
                 </div>
+
+              </div>
+
+              <!-- BOTONES DE PAGAR Y DE RESETEAR EL CARRITO -->
+               
+              <div class="botones-carrito">
+
+                <button class="boton-final-carrito" id="boton-pagar">Proceder al pago</button>
+                <button class="boton-final-carrito" id="boton-resetear-carrito">Vaciar carrito</button>
 
               </div>
 
