@@ -4,12 +4,12 @@
 
 const resetearLocalStorage = document.getElementById("boton-resetear-localstorage");
 
-resetearLocalStorage.addEventListener("click", 
-      () => {
-          localStorage.clear();
-          console.log("local storage limpio!");
-      }
-);
+// resetearLocalStorage.addEventListener("click", 
+//       () => {
+//           localStorage.clear();
+//           console.log("local storage limpio!");
+//       }
+// );
 
 //------------  ELEMENTOS DEL DOM CAPTURADOS  ------------
 
