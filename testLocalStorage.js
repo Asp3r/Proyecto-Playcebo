@@ -104,3 +104,5 @@ const totalAPagarTexto = document.getElementById("sumaTotal");
 let sumaTotalCarrito = 0;
 
 const precioFinal = document.getElementById("precioFinal");
+
+

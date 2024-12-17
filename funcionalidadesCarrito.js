@@ -4,12 +4,12 @@
 
 const resetearLocalStorage = document.getElementById("boton-resetear-localstorage");
 
-// resetearLocalStorage.addEventListener("click", 
-//      () => {
-//          localStorage.clear();
-//          console.log("local storage limpio!");
-//      }
-//  );
+resetearLocalStorage.addEventListener("click", 
+      () => {
+          localStorage.clear();
+          console.log("local storage limpio!");
+      }
+);
 
 //------------  ELEMENTOS DEL DOM CAPTURADOS  ------------
 
@@ -182,7 +182,7 @@ if (localStorage.getItem("ajedrezCarrito") === "true") {
     //Le agrega la clase para esconder el mensaje de "carrito vacio"
         
     if (!(carritoVacio.classList.contains("carrito-vacio-true"))) {
-        carritoVacio.classList.add("carrito-vacio-true") 
+        carritoVacio.classList.add("carrito-vacio-true"); 
     };  
 
     //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
@@ -1108,6 +1108,60 @@ botonEliminarTortugas.addEventListener("click",
             console.log("clase agregada!");
 
         }
+
+    }
+);
+
+//BOTON PARA RESETEAR EL CARRITO DE COMPRAS
+
+botonResetCarrito.addEventListener("click", 
+    () => {
+
+        localStorage.setItem("itemsEnCarrito", "0");
+        itemsCarritoAux = parseInt(localStorage.getItem("itemsEnCarrito"));
+
+        localStorage.setItem("ajedrezCarrito", "false");
+        localStorage.setItem("rompecabezasCarrito", "false");
+        localStorage.setItem("spinnerCarrito", "false");
+        localStorage.setItem("pistaCarrito", "false");
+        localStorage.setItem("masterballCarrito", "false");
+        localStorage.setItem("tortugasCarrito", "false");
+
+        sumaTotalCarrito = 0;
+        localStorage.setItem("totalPagar", sumaTotalCarrito);
+
+        botonResetCarrito.disabled = true;
+        botonPagar.disabled = true;
+
+        carritoVacio.classList.remove("carrito-vacio-true");
+
+        ajedrezEnElCarrito.classList.add("ajedrez-no-mostrar");
+        rompecabezasEnElCarrito.classList.add("rompecabezas-no-mostrar");
+        spinnerEnElCarrito.classList.add("spinner-no-mostrar");
+        pistaEnElCarrito.classList.add("pista-no-mostrar");
+        masterballEnElCarrito.classList.add("masterball-no-mostrar");
+        tortugasEnElCarrito.classList.add("tortugas-no-mostrar");
+
+        totalAPagarSeccion.classList.add("suma-no-mostrar");
+
+    }
+);
+
+
+//BOTON DE PROCEDER AL PAGO
+
+botonPagar.addEventListener("click", 
+    () => {
+
+        // alert("¡Has pagado " + sumaTotalCarrito + "!" + ". Muchas gracias por tu compra, esperamos volver a verte.");
+
+        swal({
+            title: "¡Compra realizada con exito!",
+            text: "Has pagado $ " + sumaTotalCarrito + " en total.",
+            icon: "success",
+            button: "Volver a la pagina",
+          }
+        );
 
     }
 );
