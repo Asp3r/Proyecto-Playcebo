@@ -55,7 +55,7 @@
 
                       <div class="info-producto">
                         <h5>Tablero de Ajedrez</h5>
-                        <h6>$ 25.00</h6>
+                        <h6 id="precioAjedrez">$ 25.00</h6>
                       </div>
 
                       <button class="boton-carrito" id="carrito-ajedrez">Añadir al carrito</button>
@@ -74,7 +74,7 @@
 
                         <div class="info-producto">
                           <h5>Rompecabezas (24 piezas)</h5>
-                          <h6>$ 7.50</h6>
+                          <h6 id="precioRompecabezas">$ 7.50</h6>
                         </div>
                         
                         <button class="boton-carrito" id="carrito-rompecabezas">Añadir al carrito</button>
@@ -93,7 +93,7 @@
 
                         <div class="info-producto">
                           <h5>Fidget Spinner</h5>
-                          <h6>$ 3.00</h6>
+                          <h6 id="precioSpinner">$ 3.00</h6>
                         </div>
                         
                         <button class="boton-carrito" id="carrito-spinner">Añadir al carrito</button>
@@ -112,7 +112,7 @@
 
                         <div class="info-producto">
                           <h5>Pista de Hot Wheels</h5>
-                          <h6>$ 32.50</h6>
+                          <h6 id="precioPista">$ 32.50</h6>
                         </div>
                         
                         <button class="boton-carrito" id="carrito-pista">Añadir al carrito</button>
@@ -131,7 +131,7 @@
 
                         <div class="info-producto">
                           <h5>Masterball de coleccion</h5>
-                          <h6>$ 10.75</h6>
+                          <h6 id="precioMasterball">$ 10.75</h6>
                         </div>
                         
                         <button class="boton-carrito" id="carrito-masterball">Añadir al carrito</button>
@@ -150,7 +150,7 @@
 
                         <div class="info-producto">
                           <h5>Set de Tortugas de Peluche</h5>
-                          <h6>$ 17.00</h6>
+                          <h6 id="precioTortugas">$ 17.00</h6>
                         </div>
                         
                         <button class="boton-carrito" id="carrito-tortugas">Añadir al carrito</button>
@@ -175,9 +175,9 @@
 
               <!-- PRIMER FILA DEL CARRITO. DESCRIPCION DEL PRODUCTO / PRECIO / CELDA VACIA -->
 
-              <div class="presentacion-carrito">
+              <!-- <div class="presentacion-carrito">
                 <h4>Carrito de compras</h4>
-              </div>
+              </div> -->
 
               <div class="carrito-titulo">
 
@@ -309,12 +309,31 @@
 
               </div>
 
+              <!-- FILA DE TOTAL A PAGAR -->
+
+              <div id="sumaEnCarrito" class="carrito-producto suma-no-mostrar">
+
+                <div class="nombre-producto">
+                  <p id="total-a-pagar-texto">Total a pagar: </p>
+                </div>
+
+                <div class="precio-producto" id="sumaTotal">
+                  <p id="precioFinal"></p>
+                </div>
+
+                <div class="eliminar-producto">
+                  
+                </div>
+
+              </div>
+
               <!-- BOTONES DE PAGAR Y DE RESETEAR EL CARRITO -->
                
               <div class="botones-carrito">
 
-                <button class="boton-final-carrito" id="boton-pagar">Proceder al pago</button>
+                <!-- <button class="boton-final-carrito" id="boton-pagar">Proceder al pago</button> -->
                 <button class="boton-final-carrito" id="boton-resetear-carrito">Vaciar carrito</button>
+                <button class="boton-final-carrito" id="boton-pagar">Proceder al pago</button>
 
               </div>
 

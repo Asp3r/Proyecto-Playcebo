@@ -5,11 +5,11 @@
 const resetearLocalStorage = document.getElementById("boton-resetear-localstorage");
 
 // resetearLocalStorage.addEventListener("click", 
-//     () => {
-//         localStorage.clear();
-//         console.log("local storage limpio!");
-//     }
-// );
+//      () => {
+//          localStorage.clear();
+//          console.log("local storage limpio!");
+//      }
+//  );
 
 //------------  ELEMENTOS DEL DOM CAPTURADOS  ------------
 
@@ -19,50 +19,106 @@ const resetearLocalStorage = document.getElementById("boton-resetear-localstorag
 // const botonSiMostrarCarritoVacio = document.querySelector(".boton-debug-2");
 const carritoVacio = document.querySelector(".carrito-vacio");
 
+//boton de "Proceder al pago" en el carrito
+
+const botonPagar = document.getElementById("boton-pagar");
+
+//boton "resetear el carrito" en el carrito
+
+const botonResetCarrito = document.getElementById("boton-resetear-carrito");
+
+//Fila de "total a pagar" del carrito
+
+const totalAPagarSeccion = document.getElementById("sumaEnCarrito");
+
+let sumaTotalCarrito = 0;
+
+const precioFinal = document.getElementById("precioFinal");
+
+
 //Ajedrez
 
 const agregarAjedrez = document.getElementById("carrito-ajedrez");
 const botonEliminarAjedrez = document.getElementById("eliminarAjedrez");
 const ajedrezEnElCarrito = document.getElementById("ajedrezEnCarrito");
+const precioAjedrez = document.getElementById("precioAjedrez").innerText;
 
 //Rompecabezas:
 
 const agregarRompecabezas = document.getElementById("carrito-rompecabezas");
 const botonEliminarRompecabezas = document.getElementById("eliminarRompecabezas");
 const rompecabezasEnElCarrito = document.getElementById("rompecabezasEnCarrito");
+const precioRompecabezas = document.getElementById("precioRompecabezas").innerText;
 
 //Fidget Spinner
 
 const agregarSpinner = document.getElementById("carrito-spinner");
 const botonEliminarSpinner = document.getElementById("eliminarSpinner");
 const spinnerEnElCarrito = document.getElementById("spinnerEnCarrito");
+const precioSpinner = document.getElementById("precioSpinner").innerText;
 
 //Pista de Hot Wheels
 
 const agregarPista = document.getElementById("carrito-pista");
 const botonEliminarPista = document.getElementById("eliminarPista");
 const pistaEnElCarrito = document.getElementById("pistaEnCarrito");
+const precioPista = document.getElementById("precioPista").innerText;
+
 
 //Masterball
 
 const agregarMasterball = document.getElementById("carrito-masterball");
 const botonEliminarMasterball = document.getElementById("eliminarMasterball");
 const masterballEnElCarrito = document.getElementById("masterballEnCarrito");
+const precioMasterball = document.getElementById("precioMasterball").innerText;
 
 //Tortugas
 
 const agregarTortugas = document.getElementById("carrito-tortugas");
 const botonEliminarTortugas = document.getElementById("eliminarTortugas");
 const tortugasEnElCarrito = document.getElementById("tortugasEnCarrito");
+const precioTortugas = document.getElementById("precioTortugas").innerText;
+
+//------------  FUNCIONES Y PROCESOS  ------------
+
+//Toma el valor que envies (en formato string) y lo SUMA al total a pagar:
+
+function sumarValorEnTotalPagar(productoParaSumar) {
+    
+    //Elimina el $ con replace y elimina los espacios con trim, despues lo convierte en float
+    let productoLimpio = parseFloat(productoParaSumar.replace("$", "").trim());
+
+    sumaTotalCarrito = sumaTotalCarrito + productoLimpio;
+}
+
+//Toma el valor que le envies (en string) y se lo RESTA al total a pagar:
+
+function restarValorEnTotalPagar(productoParaRestar){
+
+    //Elimina el $ con replace y elimina los espacios con trim, despues lo convierte en float
+    let productoLimpio = parseFloat(productoParaRestar.replace("$", "").trim());
+
+    sumaTotalCarrito = sumaTotalCarrito - productoLimpio;
+
+}
+
+//Actualiza el Precio Final en la fila de "total a pagar" del carrito
+
+function actualizarPrecioFinal(nuevoPrecio) {
+    
+    precioFinal.innerText = "$ " + nuevoPrecio;
+
+}
+  
 
 
 //------------  VARIABLES GLOBALES  ------------
 
 // let itemsEnCarrito = 0;
 
-//los futuros booleanos que me diran si un elemento ya esta en el carrito o no
+//los futuros booleanos que me diran si un elemento ya esta en el carrito o no:
 
-//El if verifica si existe la variable itemsEnCarrito. Si no existe, entra al if.
+//(El if verifica si existe la variable itemsEnCarrito. Si no existe, entra al if.)
 
 if (!localStorage.getItem("itemsEnCarrito")) {
 
@@ -75,8 +131,20 @@ if (!localStorage.getItem("itemsEnCarrito")) {
     localStorage.setItem("pistaCarrito", "false");
     localStorage.setItem("masterballCarrito", "false");
     localStorage.setItem("tortugasCarrito", "false");
+
+    localStorage.setItem("totalPagar", sumaTotalCarrito);
     
 }
+
+// if (localStorage.getItem("itemsEnCarrito") === "0") {
+//     botonResetCarrito.disabled = true;
+// }
+
+if (localStorage.getItem("itemsEnCarrito") !== null && localStorage.getItem("itemsEnCarrito") === "0") {
+    botonResetCarrito.disabled = true;
+    botonPagar.disabled = true;
+}
+
 
 
 
@@ -85,37 +153,18 @@ let itemsCarritoAux = parseInt(localStorage.getItem("itemsEnCarrito"));
 
 console.log("carrito num: " + localStorage.getItem("itemsEnCarrito"))
 
-//------------  LISTENERS  ------------
-
 console.log("items en carrito al inicio: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
 
-// botonNoMostrarCarritoVacio.addEventListener("click", 
-//     () => {
+//VERIFICO SI EN EL TOTAL A PAGAR QUEDABA ALGO DE ANTES, SI QUEDO ALGO DE ANTES, LO METO
 
-    
-//     if (!(carritoVacio.classList.contains("carrito-vacio-true"))){
+if ((localStorage.getItem("totalPagar") != "") && (localStorage.getItem("totalPagar") != null) && (localStorage.getItem("totalPagar") != undefined)) {
+     
+    sumaTotalCarrito = parseFloat(localStorage.getItem("totalPagar").replace("$", "").trim());
 
-//         carritoVacio.classList.add("carrito-vacio-true");
-//         console.log("Clase 'carrito-vacio-true' añadida.");
+    actualizarPrecioFinal(sumaTotalCarrito);
 
-//     }
-
-//     }
-// );
-
-//AGREGAR LISTENER PARA VOLVER A MOSTRAR EL MENSAJE DE CARRITO VACIO
-
-// botonSiMostrarCarritoVacio.addEventListener("click", 
-//     () => {
-
-
-//         if (carritoVacio.classList.contains("carrito-vacio-true")){
-//             carritoVacio.classList.remove("carrito-vacio-true")
-//         };
-
-//     }
-// );
+};
 
 //-----------------------------------------------------------------------------------------------
 
@@ -128,13 +177,30 @@ if (localStorage.getItem("ajedrezCarrito") === "true") {
     if (ajedrezEnElCarrito.classList.contains("ajedrez-no-mostrar")) {
         ajedrezEnElCarrito.classList.remove("ajedrez-no-mostrar");
      
-    }
+    };
 
     //Le agrega la clase para esconder el mensaje de "carrito vacio"
         
     if (!(carritoVacio.classList.contains("carrito-vacio-true"))) {
         carritoVacio.classList.add("carrito-vacio-true") 
-    }  
+    };  
+
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    };
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    };
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
+    
 
 }
 
@@ -152,6 +218,22 @@ if (localStorage.getItem("rompecabezasCarrito") === "true") {
         carritoVacio.classList.add("carrito-vacio-true") 
     }  
 
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    }
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    }    
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
+
 }
 
 if (localStorage.getItem("spinnerCarrito") === "true") {
@@ -167,6 +249,22 @@ if (localStorage.getItem("spinnerCarrito") === "true") {
     if (!(carritoVacio.classList.contains("carrito-vacio-true"))) {
         carritoVacio.classList.add("carrito-vacio-true") 
     }  
+
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    }
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    }
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
 
 }
 
@@ -184,6 +282,22 @@ if (localStorage.getItem("pistaCarrito") === "true") {
         carritoVacio.classList.add("carrito-vacio-true") 
     }  
 
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    }
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    }
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
+
 }
 
 if (localStorage.getItem("masterballCarrito") === "true") {
@@ -200,6 +314,22 @@ if (localStorage.getItem("masterballCarrito") === "true") {
         carritoVacio.classList.add("carrito-vacio-true") 
     }  
 
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    }
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    }
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
+
 }
 
 if (localStorage.getItem("tortugasCarrito") === "true") {
@@ -215,6 +345,22 @@ if (localStorage.getItem("tortugasCarrito") === "true") {
     if (!(carritoVacio.classList.contains("carrito-vacio-true"))) {
         carritoVacio.classList.add("carrito-vacio-true") 
     }  
+
+    //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+    if (botonResetCarrito.disabled) {
+        botonResetCarrito.disabled = false;
+    }
+
+    if (botonPagar.disabled) {
+        botonPagar.disabled = false;
+    }
+
+    //Muestra el total a pagar, en caso de que no este ya mostrado
+
+    if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+        totalAPagarSeccion.classList.remove("suma-no-mostrar");
+    };
 
 }
 
@@ -242,6 +388,12 @@ agregarAjedrez.addEventListener("click",
             //Le aviso al localStorage que ahora ajedrez SI eta en el carrito.
             localStorage.setItem("ajedrezCarrito", "true");
 
+            sumarValorEnTotalPagar(precioAjedrez);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
 
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
@@ -252,6 +404,23 @@ agregarAjedrez.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+            
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
+            
             
             //Para testeos
             console.log("clase ajedrez-no-mostrar encontrada y removida!");
@@ -287,6 +456,12 @@ botonEliminarAjedrez.addEventListener("click",
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            restarValorEnTotalPagar(precioAjedrez);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //En el caso de que ese haya sido el ultimo item del carrito, muestra el mensaje de carrito vacio.
@@ -296,6 +471,24 @@ botonEliminarAjedrez.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
+                
+                
 
             }
 
@@ -327,6 +520,12 @@ agregarRompecabezas.addEventListener("click",
             itemsCarritoAux++;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            sumarValorEnTotalPagar(precioRompecabezas);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //Elimina el mensaje de "carrito vacio", porque el carrito ya tiene items
@@ -336,6 +535,22 @@ agregarRompecabezas.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
             
             //Para testeos
             console.log("clase rompecabezas-no-mostrar encontrada y removida!");
@@ -370,6 +585,12 @@ botonEliminarRompecabezas.addEventListener("click",
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            restarValorEnTotalPagar(precioRompecabezas);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //En el caso de que ese haya sido el ultimo item del carrito, muestra el mensaje de carrito vacio.
@@ -379,6 +600,22 @@ botonEliminarRompecabezas.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
 
             }
 
@@ -411,6 +648,12 @@ agregarSpinner.addEventListener("click",
             itemsCarritoAux++;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            sumarValorEnTotalPagar(precioSpinner);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //Elimina el mensaje de "carrito vacio", porque el carrito ya tiene items
@@ -420,6 +663,22 @@ agregarSpinner.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
             
             //Para testeos
             console.log("clase spinner-no-mostrar encontrada y removida!");
@@ -448,6 +707,12 @@ botonEliminarSpinner.addEventListener("click",
             itemsCarritoAux = parseInt(localStorage.getItem("itemsEnCarrito"));
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
+
+            restarValorEnTotalPagar(precioSpinner);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
             
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
@@ -458,6 +723,23 @@ botonEliminarSpinner.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
+                
 
             }
 
@@ -488,6 +770,12 @@ agregarPista.addEventListener("click",
             itemsCarritoAux++;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            sumarValorEnTotalPagar(precioPista);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //Elimina el mensaje de "carrito vacio", porque el carrito ya tiene items
@@ -497,6 +785,22 @@ agregarPista.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
             
             //Para testeos
             console.log("clase pista-no-mostrar encontrada y removida!");
@@ -526,6 +830,12 @@ botonEliminarPista.addEventListener("click",
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            restarValorEnTotalPagar(precioPista);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //En el caso de que ese haya sido el ultimo item del carrito, muestra el mensaje de carrito vacio.
@@ -535,6 +845,22 @@ botonEliminarPista.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
 
             }
 
@@ -565,6 +891,12 @@ agregarMasterball.addEventListener("click",
             itemsCarritoAux++;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            sumarValorEnTotalPagar(precioMasterball);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //Elimina el mensaje de "carrito vacio", porque el carrito ya tiene items
@@ -574,6 +906,22 @@ agregarMasterball.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
             
             //Para testeos
             console.log("clase pista-no-mostrar encontrada y removida!");
@@ -603,6 +951,12 @@ botonEliminarMasterball.addEventListener("click",
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            restarValorEnTotalPagar(precioMasterball);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //En el caso de que ese haya sido el ultimo item del carrito, muestra el mensaje de carrito vacio.
@@ -612,6 +966,22 @@ botonEliminarMasterball.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
 
             }
 
@@ -640,6 +1010,12 @@ agregarTortugas.addEventListener("click",
             itemsCarritoAux++;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            sumarValorEnTotalPagar(precioTortugas);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de SUMAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //Elimina el mensaje de "carrito vacio", porque el carrito ya tiene items
@@ -649,6 +1025,22 @@ agregarTortugas.addEventListener("click",
                 console.log("Clase 'carrito-vacio-true' añadida.");
         
             }
+
+            //Se fija si los botones estan disabled, y si lo estan, los activa, ya que hay elementos en el carrito.
+
+            if (botonResetCarrito.disabled) {
+                botonResetCarrito.disabled = false;
+            }
+
+            if (botonPagar.disabled) {
+                botonPagar.disabled = false;
+            }
+
+            //Muestra el total a pagar, en caso de que no este ya mostrado
+
+            if (totalAPagarSeccion.classList.contains("suma-no-mostrar")) {
+                totalAPagarSeccion.classList.remove("suma-no-mostrar");
+            };
             
             //Para testeos
             console.log("clase pista-no-mostrar encontrada y removida!");
@@ -678,6 +1070,12 @@ botonEliminarTortugas.addEventListener("click",
             itemsCarritoAux--;
             localStorage.setItem("itemsEnCarrito", itemsCarritoAux);
 
+            restarValorEnTotalPagar(precioTortugas);
+            actualizarPrecioFinal(sumaTotalCarrito);
+
+            //Actualiza el valor en localStorage para persistencia
+            localStorage.setItem("totalPagar", sumaTotalCarrito);
+
             console.log("items en carrito despues de RESTAR 1: " + parseInt(localStorage.getItem("itemsEnCarrito")));
 
             //En el caso de que ese haya sido el ultimo item del carrito, muestra el mensaje de carrito vacio.
@@ -687,6 +1085,22 @@ botonEliminarTortugas.addEventListener("click",
                 if (carritoVacio.classList.contains("carrito-vacio-true")){
                     carritoVacio.classList.remove("carrito-vacio-true")
                 };
+
+                //Si el carrito esta vacio, vuelve a desactivar los botones de compra o limpiar
+
+                if (!botonResetCarrito.disabled) {
+                    botonResetCarrito.disabled = true;
+                };
+
+                if (!botonPagar.disabled) {
+                    botonPagar.disabled = true;
+                };
+
+                //Si ya no hay items en el carrito, deja de mostrar el Total A Pagar
+
+                if (!(totalAPagarSeccion.classList.contains("suma-no-mostrar"))) {
+                    totalAPagarSeccion.classList.add("suma-no-mostrar");
+                }
 
             }
 
