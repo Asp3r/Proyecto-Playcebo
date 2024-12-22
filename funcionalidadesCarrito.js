@@ -2,14 +2,16 @@
 
 //resetear local storage:
 
-const resetearLocalStorage = document.getElementById("boton-resetear-localstorage");
+// const resetearLocalStorage = document.getElementById("boton-resetear-localstorage");
 
-// resetearLocalStorage.addEventListener("click", 
-//       () => {
-//           localStorage.clear();
-//           console.log("local storage limpio!");
-//       }
-// );
+/*
+resetearLocalStorage.addEventListener("click", 
+      () => {
+          localStorage.clear();
+          console.log("local storage limpio!");
+      }
+);
+*/
 
 //------------  ELEMENTOS DEL DOM CAPTURADOS  ------------
 
@@ -78,6 +80,7 @@ const agregarTortugas = document.getElementById("carrito-tortugas");
 const botonEliminarTortugas = document.getElementById("eliminarTortugas");
 const tortugasEnElCarrito = document.getElementById("tortugasEnCarrito");
 const precioTortugas = document.getElementById("precioTortugas").innerText;
+
 
 //------------  FUNCIONES Y PROCESOS  ------------
 

@@ -43,7 +43,14 @@
                 <h3>¡Te presentamos nuestros productos mas populares!</h3>
             </section>
 
-            <button id="debug-api">Mostrar JSON de api</button>
+            <!-- <button id="debug-api">Mostrar JSON de api</button> -->
+            
+            <section class="botones-divisas">
+
+              <button  class="boton-divisas" id="boton-a-pesos">Precios en ARS (API de conversion)</button>
+              <button  class="boton-divisas" id="boton-a-dolares">Precios en USD (Por defecto)</button>
+
+            </section>
 
             <section class="productos-grid">
 
@@ -212,7 +219,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 25.00</p>
+                  <p id="ajedrezPrecioEnCarrito">$ 25.00</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -230,7 +237,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 7.50</p>
+                  <p id="rompecabezasPrecioEnCarrito">$ 7.50</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -248,7 +255,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 3.00</p>
+                  <p id="spinnerPrecioEnCarrito">$ 3.00</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -266,7 +273,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 32.50</p>
+                  <p id="pistaPrecioEnCarrito">$ 32.50</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -284,7 +291,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 10.75</p>
+                  <p id="masterballPrecioEnCarrito">$ 10.75</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -302,7 +309,7 @@
                 </div>
 
                 <div class="precio-producto">
-                  <p>$ 17.00</p>
+                  <p id="tortugasPrecioEnCarrito">$ 17.00</p>
                 </div>
 
                 <div class="eliminar-producto">
@@ -320,7 +327,7 @@
                 </div>
 
                 <div class="precio-producto" id="sumaTotal">
-                  <p id="precioFinal"></p>
+                  <p id="precioFinal">0</p>
                 </div>
 
                 <div class="eliminar-producto">

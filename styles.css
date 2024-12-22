@@ -603,6 +603,43 @@ h1, h2, h3, h4, h5, h6, p, li, label{
     font-weight: bold;
 }
 
+.botones-divisas{
+    display: flex;             
+    justify-content: space-between; 
+    align-items: center;       
+    padding: 0 1em;           
+}
+
+.boton-divisas{
+    padding: 0.5em 1em;        
+    font-size: 1rem;           
+    border: 1px solid #ccc;    
+    border-radius: 4px;        
+    background-color: #678fff; 
+    color: white; 
+    cursor: pointer;   
+    transition: background 0.3s ease; 
+    margin-bottom: 3%;
+}
+
+.boton-divisas:hover{
+    /* transform: scale(1.05); */
+    background-color:#2770a1
+}
+
+/* 
+
+{
+    display: flex;             
+    justify-content: space-between; 
+    align-items: center;       
+    padding: 0 1em;           
+}
+
+*/
+
+
+
 
 
 
