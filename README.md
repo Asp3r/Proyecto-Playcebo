@@ -8,6 +8,7 @@
 
 1. [Descripcion del Proyecto](#descripcion-del-proyecto)
 2. [Herramientas Usadas](#herramientas-usadas)
+3. [Funcionalidades](#funcionalidades)
 
 ## Descripcion del Proyecto
 
@@ -29,4 +30,13 @@ Todas las secciones de la pagina son completamente responsive.
 * Flexbox (en el nav, footer, y el grid de Inicio).
 * Css Grid (en la presentacion de los empleados de la empresa, de la seccion Inicio)
 * Diseño responsive en las 3 secciones (Productos, Contacto e Inicio)
+* Javascript (en la manipulacion del DOM)
+* Integracion de API
+
+## Funcionalidades
+
+* Diseño 100% responsive
+* Dinamismo y manipulacion del DOM a traves de Javascript
+* Permanencia de informacion mediante el uso de Local Storage
+* Conversion de divisas (ARS -> USD y viceversa) mediante la integracion de FXRatesAPI
 
